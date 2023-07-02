@@ -1,0 +1,17 @@
+<!--Creación de add.html, usando models.py(Drilling Final, parte 2)-->
+
+{% load crispy_forms_tags %}
+<div class="container py-5" id="vehiculo-add"> 
+    
+    <div>
+        <h1>Agregar Vehículo</h1>
+    </div>
+    <form acction="" method="POST" id="form-add">
+            {% csrf_token %}
+            {{form | crispy }}
+        <div class="d-flex justify-content" >
+            <button type="submit" id="btn-submit" class="btn btn-warning ">Enviar</button>
+        </div>
+    </form>
+            
+</div> 
