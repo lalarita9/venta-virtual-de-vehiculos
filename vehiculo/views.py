@@ -59,3 +59,40 @@ def registro_usuario(request):
     form = RegistroUsuarioForm()
     context = {"register_form" : form } 
     return render(request, "registro.html", context)
+
+#Creación método login_vehiculo, inicio sesión de un usuario (Drilling Final, parte 4)
+def login_vehiculo(request):
+    #Validación de Datos
+    if request.method == "POST":
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            #Sí las credenciales son correctas, se inicia sesión:
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"Te has logueado como: {username}.")
+                return HttpResponseRedirect('/navbar')
+            #Sí los campos son invalidos:
+            else:
+                messages.error(request, "El usuario o la constraseña no son correctas")
+        
+    form = AuthenticationForm()
+    context = {"login_form": form}
+    return render(request, 'login.html', context)
+
+#Creación método logout_vehiculo, cierre de Sesión del usuario (Drilling Final, parte 4)
+def logout_vehiculo(request):
+    logout(request)
+    messages.info(request, "Se ha cerrado la sesión satisfactoriamente")
+    return HttpResponseRedirect('/login')
+
+#Creación del método listar_vehiculo(Drilling Final, Parte 4)
+def listar_vehiculo(request):
+    lista = VehiculoModel.objects.all()
+    
+    context = {
+        'listas': lista                     
+            }
+    return render(request, 'lista.html', context)
