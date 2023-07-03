@@ -1,0 +1,64 @@
+<!--Creación de base.html, con la estructura básica de "HTML"-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--Título de Página-->
+    <title>VENTA VIRTUAL DE VEHÍCULOS</title>
+    <!--Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384- UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!--Fuente-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--CSS-->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!--Bootstrap 5-->
+    {% load bootstrap5 %}
+    <!--Bootstrap CSS-->
+    {% bootstrap_css %}  
+    <!--Bootstrap JSS-->   
+    {% bootstrap_javascript %}
+    <!--Bootstrap Messages-->
+    {% bootstrap_messages %}
+    <!--Icon-->
+    <link rel="icon" type="image/svg+xml" href="{% static 'img/logdrilling.ico' %}">
+</head>
+<body id="body">
+
+    <header>
+    {% block nav %}
+    {% include 'navbar.html' %}
+    {% endblock nav %}
+    </header>
+    <main class="container">
+    {% block content %}
+    {% endblock content %}
+    </main>
+    <footer>
+        <div id="footer">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4  mb-0" style="background-color:#323339;">
+              <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <img src="{% static 'img/logdrilling.png' %}" alt="" width="80" height="60">
+                </a>
+                <span class="mb-3 mb-md-0 text-muted">Drilling Final, Módulo 6 | Venta Virtual de Vehículos</span>
+              </div>
+          
+              <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="https://www.fiat.cl/" target="black"><img class="bi" src="{% static 'img/fiat.png' %}" width="44" height="50"></a></li>
+                <li class="ms-3"><a class="text-muted" href="https://www.chevrolet.cl/" target="black"><img class="bi" src="{% static 'img/chevrolet.png' %}" width="50" height="40"></a></li>
+                <li class="ms-3"><a class="text-muted" href="https://www.ford.cl/" target="black"><img class="bi" src="{% static 'img/ford.png' %}" width="50" height="44"></a></li>
+                <li class="ms-3"><a class="text-muted" href="https://toyota.cl" target="black"><img class="bi" src="{% static 'img/toyota.png' %}" width="50" height="44"></a></li>
+              </ul>
+            </footer>
+          </div>
+    </footer>
+
+<!--JavaScript-->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+
+

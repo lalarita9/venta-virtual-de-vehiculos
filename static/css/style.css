@@ -1,0 +1,53 @@
+#body {
+    background: url(../img/fondo2.jpg);
+    background-size: cover; 
+    background-repeat:no-repeat;
+    width: 100%;
+    font-family: 'Century Gothic', sans-serif;
+}
+
+#vehiculo-registro, #vehiculo-login, #vehiculo-add, .list-v{
+    color: #F5FFCB;
+}
+#p-login, #p-registro{
+    color:#c9f9b9;
+    font-size: 20px;
+}
+#card-list{
+    background: hsla(0, 100%, 100%, 0.6);
+}
+#list-tabla > th{
+    font-size: 18px;
+    font-weight: bold;
+}
+button{
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  
+  button:hover{
+      background: #03e9f4;
+      color: #050801;
+      box-shadow: 0 0 5px #03e9f4,
+                  0 0 25px #03e9f4,
+                  0 0 50px #03e9f4,
+                  0 0 200px #03e9f4;
+       -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+  }
+
+#index{
+    text-align:center;
+    width: 100%;
+    height: 100%;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    color: #F5FFCB;
+    font-style: oblique;
+    font-size: 80px;
+ }
+
+ 
+  
+

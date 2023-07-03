@@ -23,3 +23,9 @@ def input_models(request):
     
     context['form'] = form
     return render(request,'add.html', context)
+
+#Creación de vista navbar(Drilling Final, Parte 3)
+def navbar(request):
+    context = {}
+    return render(request, 'navbar.html', context)
+
