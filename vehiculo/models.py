@@ -28,5 +28,13 @@ class VehiculoModel(models.Model):
     creado= models.DateTimeField(auto_now_add=True)
     modificado= models.DateTimeField(auto_now=True)
     
+    #Se crea Class Meta para creación de permisos(Drilling Final, parte 4)
+    class Meta:
+              
+        permissions = (
+            ("visualizar_catalogo", "Puede visualizar catálogo vehículo"),
+           
+        )
+    
     def __str__(self):
         return self.marca
