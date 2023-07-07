@@ -1,2 +1,11 @@
 <!--Creación de Index.html, (Drilling Final, parte 2)-->
-<h1>Catálogos de Vehículos</h1>
+<!--Se agrega herencia plantilla base.html-->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container py-5 fh">       
+        <h1 id="index">Cátalogo de Vehículos</h1> 
+    </div>
+   
+{% endblock %}

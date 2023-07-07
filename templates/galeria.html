@@ -1,0 +1,133 @@
+<!--Creación de lista.html (Drilling Final, Extras)-->
+<!--Se agrega herencia plantilla base.html-->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="galeria">
+    <div class="seleccion py-3 mb-5" id="seleccion">
+        <div class="galeria-principal" style="width: 25rem">
+            <div class="card fondo py-2 " style="width: 25rem">
+                
+                    <img src="{% static 'img/ford-f150.png' %}" alt="" class="img-principal" id="img">
+                    {% for lista in listas %}
+                        {% if lista.marca == 'Ford' %}
+                    <div class="card-body parrafo-small">
+                        <h2 class="card-title" id="marca"><small class="text-mute">marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title" id="modelo"><small class="text-mute">modelo:</small> {{ lista.modelo }}</h3>
+                        <h4 class="card-title" id="precio"><small class="text-mute">precio:</small> ${{ lista.precio }}</h4>
+                    </div>  
+                        {% endif %}  
+                    {% endfor %} 
+                
+            </div>
+        </div>
+    </div>
+    <div class="mostrador" id="mostrador">
+        <div class="row galeria-escaparate ">
+            <div class="item col" onclick="mostrar(this)">
+                <div class="card mx-4 mb-5 h-60 card-item" style="width: 5rem;">
+                     <img src="{% static 'img/fiat-punto.png' %}" class="card-img-top" alt="imagen-1">
+                    {% for lista in listas %}
+                        {% if lista.modelo == 'Punto' %}
+                    <div class="card-body gal-pa">
+                        <h2 class="card-title marca"><small>marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title modelo"><small>modelo:</small> {{ lista.modelo}}</h3>
+                        <h4 class="card-title precio"><small>precio:</small> ${{ lista.precio }}</h4>
+                    </div>
+                        {% endif %}  
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item col" onclick="mostrar(this)">
+                <div class="card mx-4 mb-5 h-60 card-item" style="width: 5rem;">
+                    <img src="{% static 'img/fiat-ducato.png' %}" class="card-img-top" alt="imagen-2">
+                    {% for lista in listas %}
+                        {% if lista.modelo == 'Furgoneta Ducato' %}
+                    <div class="card-body gal-pa">
+                        <h2 class="card-title marca"><small>marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title modelo"><small>modelo:</small> {{ lista.modelo }}</h3>
+                        <h4 class="card-title precio"><small>precio:</small> ${{ lista.precio }}</h4>
+                    </div>
+                        {% endif %}  
+                    {% endfor %}
+                </div>               
+            </div>
+            <div class="item col" onclick="mostrar(this)">
+                <div class="card mx-4 mb-5 h-60 card-item acitve" style="width: 5rem;">
+                    <img src="{% static 'img/ford-f150.png' %}" class="card-img-top" alt="imagen-0">
+                    {% for lista in listas %}
+                        {% if lista.marca == 'Ford' %}
+                    <div class="card-body gal-pa">
+                        <h2 class="card-title marca"><small>marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title modelo"><small>modelo:</small> {{ lista.modelo }}</h3>
+                        <h4 class="card-title precio"><small>precio:</small> ${{ lista.precio }}</h4>
+                     </div> 
+                     {% endif %}  
+                    {% endfor %}     
+                </div>
+            </div>
+            <div class="item col" onclick="mostrar(this)">
+                <div class="card mx-4 mb-5 h-60 card-item" style="width: 5rem;">
+                    <img src="{% static 'img/toyota-4runner.png' %}" class="card-img-top" alt="imagen-3">
+                    {% for lista in listas %}
+                        {% if lista.marca == 'Toyota' %}
+                    <div class="card-body gal-pa">
+                        <h2 class="card-title marca"><small>marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title modelo"><small>modelo:</small> {{ lista.modelo }}</h3>
+                        <h4 class="card-title precio"><small>precio:</small> ${{ lista.precio }}</h4>
+                    </div>
+                        {% endif %}  
+                    {% endfor %}
+                </div>                
+            </div>
+            <div class="item col" onclick="mostrar(this)">
+                <div class="card mx-4 mb-5 h-60 card-item" style="width: 5rem;">
+                    <img src="{% static 'img/chevrolet-corvette.png' %}" class="card-img-top" alt="imagen-4">
+                    {% for lista in listas %}
+                        {% if lista.marca == 'Chevrolet' %}
+                    <div class="card-body gal-pa">
+                        <h2 class="card-title marca"><small>marca:</small> {{ lista.marca }}</h2>
+                        <h3 class="card-title modelo"><small>modelo:</small> {{ lista.modelo }}</h3>
+                        <h4 class="card-title precio"><small>precio:</small> ${{ lista.precio }}</h4>
+                    </div>
+                        {% endif %}  
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+    
+{% endblock  %}
+
+{% block javascripts%}
+<script type="text/javascript">
+    let mostrador = document.getElementById("mostrador");
+    let seleccion = document.getElementById("seleccion");
+    let selectImg = document.getElementById("img");
+    let selectMarca = document.getElementById("marca");
+    let selectModelo = document.getElementById("modelo");
+    let selectPrecio = document.getElementById("precio");
+    
+    function mostrar(item){
+        eliminarBordes();
+               
+        selectImg.src = item.getElementsByTagName("img")[0].src;
+    
+        selectMarca.innerHTML =  item.getElementsByTagName("h2")[0].innerHTML;
+    
+        selectModelo.innerHTML = item.getElementsByTagName("h3")[0].innerHTML;
+    
+        selectPrecio.innerHTML =  item.getElementsByTagName("h4")[0].innerHTML;
+    
+    }
+
+    function eliminarBordes(){
+        var items = document.getElementsByClassName("item");
+        for(i=0;i <items.length; i++){
+            items[i].style.border = "none";
+        }
+    }
+</script>
+{% endblock javascripts%}

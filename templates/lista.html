@@ -1,4 +1,4 @@
-<!--Creación de lista.html (Drilling Final, parte 3)-->
+<!--Creación de lista.html (Drilling Final, parte 4)-->
 <!--Se agrega herencia plantilla base.html-->
 
 {% extends 'base.html' %}
@@ -32,6 +32,7 @@
           <td>{{lista.categoria}}</td>
           <td>${{lista.precio}}.-</td>
           <td> 
+            <!--Se usa condicional para obtener Condición de Precios-->
             {% if lista.precio > 30000 %}
                 Alto
             {% elif lista.precio > 10000 and lista.precio <= 30000 %}
@@ -42,6 +43,10 @@
                 Oops, algo anda mal!
             {% endif%}              
           </td>
+          <!--Se agrega button "Modificar"(Drilling Final, Extras)-->
+          <td><button type="button" class="btn btn-warning" onclick="abrir_modal_modificar('{% url 'vehiculo/modal' lista.id%}')">Modificar
+          </button></td>
+          
         </tr>
       </tbody>
       {% endfor%}
@@ -50,6 +55,17 @@
       {% endif %}
    </table>
   </div>
-  
+  <div class="modal fade" id="modificar" role="dialog">
+  </div> 
 </div> 
 {% endblock  %}
+<!--Se agrega código javascripts para el funcinamiento de Modal-->
+{% block javascripts%}
+<script type="text/javascript">
+  function abrir_modal_modificar(url){
+    $('#modificar').load(url, function(){
+      $(this).modal('show');
+    });
+  }
+</script>
+{% endblock javascripts%}

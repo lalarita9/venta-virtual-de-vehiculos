@@ -1,6 +1,7 @@
 from django.urls import path
 #Importación de las vistas
-from .views import inicio, input_models, navbar, registro_usuario, listar_vehiculo, login_vehiculo, logout_vehiculo
+from .views import inicio, input_models, navbar, registro_usuario, listar_vehiculo, \
+      login_vehiculo, logout_vehiculo, editar_vehiculo, galeria_vehiculo
 
 urlpatterns = [
    #Se agrega la url "index",(Drilling Final, parte 2)
@@ -17,6 +18,9 @@ urlpatterns = [
    path('logout/', logout_vehiculo, name='logout'),
    #Se agrega la url "list",(Drilling Final, parte 4)
    path('vehiculo/list', listar_vehiculo, name = 'vehiculo/list'),
-   
+   #Se agrega la url "modal",(Drilling Final, Extras)
+   path('vehiculo/modal/<id>/', editar_vehiculo, name = 'vehiculo/modal'),
+   #Se agrega la url "galeria",(Drilling Final, Extras)
+   path('vehiculo/galeria', galeria_vehiculo, name = 'vehiculo/galeria'),
   
 ]

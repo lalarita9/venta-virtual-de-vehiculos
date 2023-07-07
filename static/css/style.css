@@ -1,3 +1,4 @@
+/* Estilo de body, que heredera la mayoria de las urls*/
 #body {
     background: url(../img/fondo2.jpg);
     background-size: cover; 
@@ -5,7 +6,7 @@
     width: 100%;
     font-family: 'Century Gothic', sans-serif;
 }
-
+/* Se específica el color fuente*/
 #vehiculo-registro, #vehiculo-login, #vehiculo-add, .list-v{
     color: #F5FFCB;
 }
@@ -13,13 +14,16 @@
     color:#c9f9b9;
     font-size: 20px;
 }
+/*Se específica el fondo de tabla en list.html */
 #card-list{
     background: hsla(0, 100%, 100%, 0.6);
 }
+/*Se específica font de tabla en list.html*/
 #list-tabla > th{
     font-size: 18px;
     font-weight: bold;
 }
+/*Se específica estilo del button en la mayoria de las urls */
 button{
     letter-spacing: 2px;
     overflow: hidden;
@@ -36,7 +40,7 @@ button{
                   0 0 200px #03e9f4;
        -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
   }
-
+/*Se específica el estilo de index.html */
 #index{
     text-align:center;
     width: 100%;
@@ -47,7 +51,52 @@ button{
     font-style: oblique;
     font-size: 80px;
  }
-
+/*Se específica el estilo de galeria.html */
+ .galeria {
+    width: 100%;
+ }
+ .seleccion {
+    margin-left: 30%;
+    color: #F5FFCB;
+ }
+ /*Efecto Glass Card, código pertece a RitviX(Youtube) */
+.galeria-principal{
+    border-radius: 1rem;
+    border: 1px solid transparent;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+    border-top-color: rgba(225, 225, 225, 0.5);
+    border-left-color: rgba(225, 225, 225, 0.5);
+    border-bottom-color: rgba(225, 225, 225, 0.5);
+    border-right-color: rgba(225, 225, 225, 0.5);
+}
+.galeria-principal .fondo {
+    background-color: rgba(225, 225, 225, 0.1);
+}
+/*Fin efecto Glass Card*/
+.parrafo-small small {
+    font-size: 22px;
+    font-variant:small-caps;
+    color: #dedede;
+}
+.gal-pa .marca, .precio, .modelo {
+    font-size: 4px;
+}
+.card-item {
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    object-fit: cover;
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+    opacity: .7;
+    transition: all 400ms ease;
+}
+.card-item:hover{
+    background-color: rgba(0, 0, 0, 0.75);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+/*fin estilo galeria.html */
  
   
 

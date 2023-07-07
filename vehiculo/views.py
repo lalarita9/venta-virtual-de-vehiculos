@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from .forms import VehiculoForm, RegistroUsuarioForm
 from .models import VehiculoModel
@@ -96,3 +96,28 @@ def listar_vehiculo(request):
         'listas': lista                     
             }
     return render(request, 'lista.html', context)
+
+#Creación del método editar_vehiculo(Drilling Final, Extras)
+def editar_vehiculo(request, id):
+    muestra = get_object_or_404(VehiculoModel, id=id)
+    
+    context= {
+        'form': VehiculoForm(instance=muestra)
+    }
+    
+    if request.method == 'POST':
+        formato = VehiculoForm(request.POST or None, request.FILES or None, intance=muestra)
+        if formato.is_valid():
+            formato.save()
+            return HttpResponseRedirect('/vehiculo/list')
+        context['form'] = formato
+
+    return render(request, 'modal.html', context)
+#Creación del método editar_vehiculo(Drilling Final, Extras)
+def galeria_vehiculo(request):
+    lista = VehiculoModel.objects.all()
+        
+    context = {
+        'listas': lista                            
+            }
+    return render(request, 'galeria.html', context)
