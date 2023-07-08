@@ -2,7 +2,6 @@
 {% load bootstrap5 %}
 {% bootstrap_css %}     
 {% bootstrap_javascript %}
-{% bootstrap_messages %}
 {% load static %}
 {% block nav %}
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#323339;">
@@ -16,20 +15,24 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/">Inicio</a>
           </li>
-          <!--Se condiona según usuario ver Agregar-->
-         
+          <!--Se condiona según usuario la opción de ver y agregar en la url add.html-->
+          {% if perms.vehiculo.add_vehiculomodel %}
           <li class="nav-item"> 
             <a class="nav-link" href="{% url 'vehiculo/add' %}">Agregar</a>
           </li>
-          
+          {% endif%}
+          <!--El usuario debe estar registrado para ver list.html-->
+          {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'vehiculo/list' %}">Listar</a>
           </li>
-
+          {% endif%}
+          <!--Se condiona según usuario la opción de ver la url galeria.html-->
+          {% if perms.vehiculo.add_vehiculomodel %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'vehiculo/galeria' %}">Galeria</a>
           </li>
-          
+          {% endif%}
         </ul>
        
       </div>

@@ -44,9 +44,11 @@
             {% endif%}              
           </td>
           <!--Se agrega button "Modificar"(Drilling Final, Extras)-->
+          <!--Se condiona según usuario la opción de botton modificar en la url list.html-->
+          {% if perms.vehiculo.add_vehiculomodel %}
           <td><button type="button" class="btn btn-warning" onclick="abrir_modal_modificar('{% url 'vehiculo/modal' lista.id%}')">Modificar
           </button></td>
-          
+          {% endif%}
         </tr>
       </tbody>
       {% endfor%}

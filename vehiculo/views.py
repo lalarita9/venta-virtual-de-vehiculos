@@ -73,7 +73,7 @@ def login_vehiculo(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"Te has logueado como: {username}.")
-                return HttpResponseRedirect('/navbar')
+                return HttpResponseRedirect('/')
             #Sí los campos son invalidos:
             else:
                 messages.error(request, "El usuario o la constraseña no son correctas")
