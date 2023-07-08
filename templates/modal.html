@@ -7,23 +7,24 @@
 {% load crispy_forms_tags %}
 
 
-<div class="modal-dialog bg-light" role="document">
-  <div class="modal-context">
-    <div class="modal-header">
-      <h2 class="modal-title">Modificar Vehiculo</h2>
-      <button class="btn-close" type="button" data-dismiss="modal" aria-label="Close">
-      </button>
-    </div>
-    <form action="" method="POST">
+<div class="modal-dialog bg-light">        
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modificar Vehículo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+  <form action="" method="POST">
       <div class="modal-body">
           {% csrf_token %}
-          {{form | crispy }}
+          {{form | crispy }}          
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-        <button class="btn btn-warning" type="submit">Confirmar</button>
-      </div>
-    </form>
+          <div>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-warning" >Confirmar</button>
+          </div>
+      </div> 
+  </form>
   </div>
-</div>   
+</div>  
    

@@ -46,8 +46,8 @@
           <!--Se agrega button "Modificar"(Drilling Final, Extras)-->
           <!--Se condiona según usuario la opción de botton modificar en la url list.html-->
           {% if perms.vehiculo.add_vehiculomodel %}
-          <td><button type="button" class="btn btn-warning" onclick="abrir_modal_modificar('{% url 'modal' lista.id%}')">Modificar
-          </button></td>
+          <td><button type="button" class="btn btn-warning" onclick="abrir_modal_modificar('{% url 'modal' lista.id%}')" data-bs-toggle="modal" data-bs-target="#exampleModal">Modificar</button>
+          </td>
           {% endif%}
         </tr>
       </tbody>
@@ -57,7 +57,7 @@
       {% endif %}
    </table>
   </div>
-  <div class="modal fade" id="modificar" role="dialog">
+  <div class="modal fade" id="modificar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   </div> 
 </div> 
 {% endblock  %}
