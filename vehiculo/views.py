@@ -10,11 +10,10 @@ from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 #Creación de vista inicio(Drilling Final, Parte 2)
-def inicio(request):
-           
-    context ={}           
-            
-    return render(request, 'index.html', context)
+def indexView(request):
+    template_name ="index.html"
+    return render(request, template_name)
+    
 #Creación del método input_models(Drilling Final, Parte 2)
 def input_models(request):
     context = {}
@@ -53,7 +52,7 @@ def registro_usuario(request):
             user = form.save()
             login(request, user)
             messages.success(request, "¡Bienvenido a Vehiculos.com, te has registrado exitosamente")
-            return HttpResponseRedirect('/navbar')
+            return HttpResponseRedirect('../navbar')
         #De lo contrario generará un mensaje error
         messages.error(request, "¡Oops ocurrió un error! Algunos datos son incorrectos")
     form = RegistroUsuarioForm()
@@ -86,7 +85,7 @@ def login_vehiculo(request):
 def logout_vehiculo(request):
     logout(request)
     messages.info(request, "Se ha cerrado la sesión satisfactoriamente")
-    return HttpResponseRedirect('/login')
+    return HttpResponseRedirect('../login')
 
 #Creación del método listar_vehiculo(Drilling Final, Parte 4)
 def listar_vehiculo(request):
@@ -109,7 +108,7 @@ def editar_vehiculo(request, id):
         formato = VehiculoForm(request.POST or None, request.FILES or None, intance=muestra)
         if formato.is_valid():
             formato.save()
-            return HttpResponseRedirect('/vehiculo/list')
+            return HttpResponseRedirect('../list')
         context['form'] = formato
 
     return render(request, 'modal.html', context)

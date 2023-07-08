@@ -1,13 +1,13 @@
 from django.urls import path
 #Importación de las vistas
-from .views import inicio, input_models, navbar, registro_usuario, listar_vehiculo, \
+from .views import indexView, input_models, navbar, registro_usuario, listar_vehiculo, \
       login_vehiculo, logout_vehiculo, editar_vehiculo, galeria_vehiculo
 
 urlpatterns = [
    #Se agrega la url "index",(Drilling Final, parte 2)
-   path('', inicio, name = 'index'),
+   path('', indexView, name = 'index'),
    #Se agrega la url "vehiculo/add",(Drilling Final, parte 2)
-   path('vehiculo/add', input_models, name = 'vehiculo/add'),
+   path('add/', input_models, name = 'add'),
    #Se agrega la url "navbar",(Drilling Final, parte 3)
    path('navbar/', navbar, name = 'navbar'),
    #Se agrega la url "registro",(Drilling Final, parte 4)
@@ -17,10 +17,10 @@ urlpatterns = [
    #Se indica vista "logout"(Drilling Final, parte 4)
    path('logout/', logout_vehiculo, name='logout'),
    #Se agrega la url "list",(Drilling Final, parte 4)
-   path('vehiculo/list', listar_vehiculo, name = 'vehiculo/list'),
+   path('list/', listar_vehiculo, name = 'list'),
    #Se agrega la url "modal",(Drilling Final, Extras)
-   path('vehiculo/modal/<id>/', editar_vehiculo, name = 'vehiculo/modal'),
+   path('modal/<id>/', editar_vehiculo, name = 'modal'),
    #Se agrega la url "galeria",(Drilling Final, Extras)
-   path('vehiculo/galeria', galeria_vehiculo, name = 'vehiculo/galeria'),
+   path('galeria/', galeria_vehiculo, name = 'galeria'),
   
 ]
