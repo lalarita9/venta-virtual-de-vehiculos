@@ -7,14 +7,18 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import Permission
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 
 # Create your views here.
 #Creación de vista inicio(Drilling Final, Parte 2)
 def indexView(request):
     template_name ="index.html"
     return render(request, template_name)
-    
 #Creación del método input_models(Drilling Final, Parte 2)
+#Se adiciona restricción de vista(Drilling Final, Parte 4)
+@login_required(login_url = '../login')
+@permission_required('add_vehiculomodel', login_url = '../login')
 def input_models(request):
     context = {}
     form = VehiculoForm(request.POST or None, request.FILES or None)
@@ -86,8 +90,8 @@ def logout_vehiculo(request):
     logout(request)
     messages.info(request, "Se ha cerrado la sesión satisfactoriamente")
     return HttpResponseRedirect('../login')
-
-#Creación del método listar_vehiculo(Drilling Final, Parte 4)
+#Creación del método listar_vehiculo, se adiciona restricción de vista(Drilling Final, Parte 4)
+@login_required(login_url = '../login')
 def listar_vehiculo(request):
     lista = VehiculoModel.objects.all()
     
@@ -96,7 +100,8 @@ def listar_vehiculo(request):
             }
     return render(request, 'lista.html', context)
 
-#Creación del método editar_vehiculo(Drilling Final, Extras)
+#Creación del método editar_vehiculo, se adiciona restricción de vista(Drilling Final, Extras)
+
 def editar_vehiculo(request, id):
     muestra = get_object_or_404(VehiculoModel, id=id)
     
@@ -112,7 +117,10 @@ def editar_vehiculo(request, id):
         context['form'] = formato
 
     return render(request, 'modal.html', context)
-#Creación del método editar_vehiculo(Drilling Final, Extras)
+
+#Creación del método galeria_vehiculo, se adiciona restricción de vista(Drilling Final, Extras)
+@login_required(login_url = '../login')
+@permission_required('add_vehiculomodel', login_url = '../login')
 def galeria_vehiculo(request):
     lista = VehiculoModel.objects.all()
         
