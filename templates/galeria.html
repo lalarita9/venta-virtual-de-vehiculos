@@ -1,6 +1,11 @@
 <!--Creación de lista.html (Drilling Final, Extras)-->
 <!--Se agrega herencia plantilla base.html-->
 
+<!--Para la información de las Cards-->
+<!--Se genera un ciclo for para obtener datos de la db-->
+<!--Se genera condicional para obtener datos filtrando por marca a exepción de la marca
+    Fiat que tiene dos modelos, en ese caso se filtra por modelo-->
+
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
@@ -8,8 +13,7 @@
     <div class="seleccion py-3 mb-5" id="seleccion">
         <div class="galeria-principal" style="width: 25rem">
             <div class="card fondo py-2 " style="width: 25rem">
-                
-                    <img src="{% static 'img/ford-f150.png' %}" alt="" class="img-principal" id="img">
+                     <img src="{% static 'img/ford-f150.png' %}" alt="" class="img-principal" id="img">
                     {% for lista in listas %}
                         {% if lista.marca == 'Ford' %}
                     <div class="card-body parrafo-small">
