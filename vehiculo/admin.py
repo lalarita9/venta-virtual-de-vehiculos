@@ -10,14 +10,17 @@ class VehiculoAdmin(admin.ModelAdmin):
     list_filter = ('precio', 'modificado')
     
     #Creación de campo dinámico Condicion de Precio (Drilling Final, parte 4)
-    def condicion_de_precio(self, listas):
-        listas=VehiculoModel.objects.all()
-        for lista in listas:
-            if lista.precio == listas.filter(precio__gt=30000):
-                return "Alto" 
-            elif  lista.precio == listas.filter(precio__gt=10000, precio__lte=30000):
-                return "Medio"
-            elif lista.precio == listas.filter(precio__lte=10000): 
-                return "Bajo"
+    def condicion_de_precio(self, obj):
+        if obj.precio >= 30000:
+            return "Alto"
+        elif obj.precio > 10000 and obj.precio <= 30000:
+            return "Medio"
+        elif obj.precio <= 10000:
+            return "Bajo"
+        
+            
+    
+        
+                
 #Registro de App Vehiculo a sitio Django(Drilling Final, Parte 1)
 admin.site.register(VehiculoModel, VehiculoAdmin)
